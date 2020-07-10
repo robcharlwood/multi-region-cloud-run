@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "multi-region-cloud-run"
+version = "0.0.0"
+description = "Python development tools"
+authors = ["Rob Charlwood <rob@bitniftee.com>"]
+
+[tool.poetry.dependencies]
+python = "3.8.2"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^1.21.0"
