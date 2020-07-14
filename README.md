@@ -67,7 +67,7 @@ The ``make build`` command also assumes that you have followed the tutorial and 
 in the root of the project and named it ``terraform.json``. If this is not the case, you'll need to tweak the build command accordingly.
 
 ## Running the API locally
-To run the sample application locally, ensure that you have golang 1.14.4 installed and then run 
+To run the sample application locally, ensure that you have golang 1.14.4 installed and then run:
 
 ```bash
 go run main.go
