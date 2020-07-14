@@ -6,9 +6,6 @@ GO_REQUIRED := $(shell cat .go-version)
 DOCKER_OK := $(shell which docker)
 PYTHON_VERSION := $(shell python -V | cut -d' ' -f2)
 PYTHON_REQUIRED := $(shell cat .python-version)
-TERRAFORM_OK := $(shell type -P terraform)
-TERRAFORM_REQUIRED := $(shell cat .terraform-version)
-CORRECT_TERRAFORM_INSTALLED := $(shell terraform -v | grep ${TERRAFORM_REQUIRED})
 
 check_docker:
 	@echo '*********** Checking for docker installation ***********'
@@ -43,21 +40,6 @@ check_go:
     endif
 .PHONY: check_go
 
-check_terraform:
-	@echo '********** Checking for terraform installation *********'
-    ifeq ('$(TERRAFORM_OK)','')
-	    $(error package 'terraform' not found!)
-    else
-	    @echo Found terraform!
-    endif
-	@echo '*********** Checking for terraform version ***********'
-    ifeq ('', '$(CORRECT_TERRAFORM_INSTALLED)')
-	    $(error incorrect version of terraform found. Expected '${TERRAFORM_REQUIRED}'!)
-    else
-	    @echo Found terraform ${TERRAFORM_REQUIRED}
-    endif
-.PHONY: check_terraform
-
 check_python:
 	@echo '*********** Checking for Python installation ***********'
     ifeq ('$(PYTHON_OK)','')
@@ -73,7 +55,7 @@ check_python:
     endif
 .PHONY: check_python
 
-setup: check_python check_poetry check_docker check_go check_terraform
+setup: check_python check_poetry check_docker check_go
 	@echo '**************** Creating virtualenv for python dev tools e.g pre-commit *******************'
 	export POETRY_VIRTUALENVS_IN_PROJECT=true && poetry install --no-root
 	poetry run pip install --upgrade pip
