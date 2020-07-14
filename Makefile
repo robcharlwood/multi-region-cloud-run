@@ -69,3 +69,12 @@ setup_precommit: check_poetry
 
 install: setup setup_precommit
 .PHONY: install
+
+build: version := "0.0.1"
+build:
+	docker build --tag ${registry}/${project}/${image_name}:latest --tag ${registry}/${project}/${image_name}:${version} .
+	cat ./.keys/terraform.json | docker login -u _json_key --password-stdin https://${registry}
+	docker push ${registry}/${project}/${image_name}:latest
+	docker push ${registry}/${project}/${image_name}:${version}
+	docker logout https://${registry}
+.PHONY: build
