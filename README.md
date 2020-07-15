@@ -1,7 +1,7 @@
 # Multi Region Cloud Run
 [![Build Status](https://travis-ci.org/robcharlwood/multi-region-cloud-run.svg?branch=master)](https://travis-ci.org/robcharlwood/multi-region-cloud-run/)
 
-This repository contains the partner codebase for Rob Charlwood's Medium tutorial - "Multi Region Load Balancing with GO and Google Cloud Run - Part 1".
+This repository contains the partner codebase for Rob Charlwood's Medium tutorial - ["Multi Region Load Balancing with GO and Google Cloud Run - Part 1"](https://medium.com/@bitniftee/multi-region-load-balancing-with-go-and-google-cloud-run-part-1-c2a2e39ce022).
 
 ### Checkout and setup
 To work with this codebase, you will require the below to be setup and configured on your machine.
